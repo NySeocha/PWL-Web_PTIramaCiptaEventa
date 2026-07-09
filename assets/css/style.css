@@ -10,22 +10,25 @@ body {
 a { text-decoration: none; transition: 0.3s; }
 
 /* =========================================
-   2. HEADER TRANSPARAN (Melayang di atas gambar)
+   2. HEADER (Latar Belakang Putih Solid)
    ========================================= */
 .header-transparent {
-    position: absolute; 
-    top: 0; left: 0; width: 100%;
-    padding: 20px 60px; /* Padding sedikit dikurangi agar pas dengan logo gambar */
-    
-    /* Perintah wajib agar logo di kiri dan menu di kanan */
+    /* Mengubah posisi menjadi sticky agar tetap di atas saat di-scroll */
+    position: sticky; 
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    padding: 15px 60px; /* Padding sedikit dikecilkan agar lebih proporsional */
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
+    z-index: 1000;
     
-    z-index: 100;
+    /* Perintah utama untuk membuat background menjadi putih */
+    background-color: #ffffff; 
     
-    /* Hapus garis miring di bawah ini jika kamu ingin latar belakang header menjadi putih solid */
-    /* background-color: #fff; */ 
+    /* Tambahan bayangan halus di bawah header agar terlihat mewah */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
 }
 
 /* Pengaturan ukuran logo gambar agar proporsional */
@@ -57,7 +60,7 @@ a { text-decoration: none; transition: 0.3s; }
     
     /* Ubah bagian url() agar memanggil folder images lokalmu */
     background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.7)), 
-                url('/MarenaIntanFaylisa/irama_cipta/assets/images/latar.jpeg') no-repeat center center/cover;
+                url('/MarenaIntanFaylisa/irama_cipta/assets/images/latar.jpg') no-repeat center center/cover;
     
     padding: 0 20px;
 }
@@ -100,4 +103,258 @@ a { text-decoration: none; transition: 0.3s; }
     border-radius: 50px; text-align: center;
     font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
     z-index: 100; display: flex; align-items: center; justify-content: center;
+}
+
+/* =========================================
+   5. ABOUT PAGE (VISI & MISI) STYLES
+   ========================================= */
+.hero-about {
+    position: relative;
+    height: 65vh; /* Sedikit ditinggikan agar gradasinya lebih halus */
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    
+    /* KUNCI GRADASI SEAMLESS (FADE TO BOTTOM) */
+    background: linear-gradient(
+        to bottom, 
+        rgba(255, 255, 255, 0.1) 0%,   /* Atas (0%): Sangat transparan, gambar terlihat jelas */
+        rgba(255, 255, 255, 0.4) 60%,  /* Tengah (60%): Mulai tertutup warna putih tipis */
+        rgba(255, 255, 255, 1) 100%    /* Bawah (100%): Putih solid, menyatu tanpa batas dengan halaman bawah */
+    ), 
+    url('../images/latar.jpg') no-repeat center center/cover;
+    
+    padding: 0 20px;
+}
+
+.hero-about h1 {
+    font-size: 3.5rem; 
+    font-weight: 900; 
+    color: #000000; /* Biru spesifik yang kamu mau */
+    margin-top: 60px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 10px rgba(255,255,255,0.8); /* Efek cahaya di belakang teks agar terbaca jika background gelap */
+}
+
+.about-section {
+    padding: 80px 20px;
+    max-width: 1100px; margin: 0 auto;
+}
+.about-intro {
+    text-align: center; max-width: 900px; margin: 0 auto 60px;
+}
+.about-intro h2 { font-size: 2.2rem; color: #111; margin-bottom: 25px; }
+.about-intro p { font-size: 1.1rem; color: #444; line-height: 1.8; text-align: justify; }
+
+.vision-mission-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+}
+.vm-card {
+    background: #f8f9fa; padding: 45px; border-radius: 12px;
+    border-top: 5px solid #1d419d; /* Aksen garis biru di atas kotak */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+.vm-card h3 { 
+    font-size: 1.8rem; color: #1d419d; margin-bottom: 20px; 
+    display: flex; align-items: center; gap: 15px; 
+}
+.vm-card p, .vm-card ul { color: #444; line-height: 1.8; font-size: 1.05rem; }
+.vm-card ul { padding-left: 20px; margin-top: 15px; }
+.vm-card li { margin-bottom: 12px; }
+
+/* Agar desain tetap rapi saat dibuka di HP */
+@media (max-width: 768px) {
+    .vision-mission-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   6. CONTACT PAGE STYLES (FORM TAMU)
+   ========================================= */
+.hero-contact {
+    position: relative;
+    height: 45vh; 
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    
+    /* Typo 100__ sudah diperbaiki menjadi 100% */
+    background: linear-gradient(
+        to bottom, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0.5) 50%, 
+        rgba(255, 255, 255, 1) 100%
+    ), 
+    url('../images/latar.jpg') no-repeat center center/cover;
+    
+    padding: 0 20px;
+}
+.hero-contact h1 {
+    font-size: 3.5rem; font-weight: 900; color: #000000;
+    margin-top: 40px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 10px rgba(255,255,255,0.8);
+}
+
+.contact-section {
+    padding: 20px 20px 80px;
+    max-width: 600px; /* Membatasi lebar area formulir agar pas di tengah */
+    margin: 0 auto;
+}
+
+/* Merapikan elemen label agar selalu berada di atas kotak input */
+.contact-card-form label {
+    display: block; /* Kunci agar label tidak bersebelahan dengan input */
+    text-align: left; /* Memastikan teks rata kiri */
+    font-weight: 700;
+    color: #333;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+/* Merapikan kotak input agar lebarnya penuh dan presisi */
+.contact-card-form input[type="text"],
+.contact-card-form input[type="email"],
+.contact-card-form select,
+.contact-card-form textarea {
+    display: block; /* Kotak input turun ke baris baru */
+    width: 100% !important; /* Kotak input dipaksa membentang penuh 100% */
+    box-sizing: border-box; /* Agar padding di dalam tidak membuat kotak meluber keluar */
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    background-color: #f8fafc !important;
+    color: #333 !important;
+    font-size: 15px !important;
+    margin-bottom: 25px !important;
+    transition: all 0.3s ease;
+}
+
+.contact-card-form input:focus,
+.contact-card-form select:focus,
+.contact-card-form textarea:focus {
+    border-color: #1d419d !important;
+    background-color: #fff !important;
+    box-shadow: 0 0 0 3px rgba(29, 65, 157, 0.15) !important;
+    outline: none; /* Menghilangkan garis biru bawaan browser yang jelek */
+}
+.contact-card-form input[type="text"],
+.contact-card-form input[type="email"],
+.contact-card-form select,
+.contact-card-form textarea {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    background-color: #f8fafc !important;
+    color: #333 !important;
+    font-size: 15px !important;
+    margin-bottom: 20px !important;
+    transition: all 0.3s ease;
+}
+.contact-card-form input:focus,
+.contact-card-form select:focus,
+.contact-card-form textarea:focus {
+    border-color: #1d419d !important;
+    background-color: #fff !important;
+    box-shadow: 0 0 0 3px rgba(29, 65, 157, 0.15) !important;
+}
+
+/* Mengubah tombol kirim menjadi biru solid bulat panjang */
+.contact-card-form input[type="submit"] {
+    background: #1d419d !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    padding: 14px !important;
+    border-radius: 50px !important; /* Bentuk kapsul/pill button */
+    border: none !important;
+    font-size: 16px !important;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(29, 65, 157, 0.3) !important;
+    transition: all 0.3s ease;
+}
+.contact-card-form input[type="submit"]:hover {
+    background: #153073 !important; /* Biru agak gelap saat disentuh kursor */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(29, 65, 157, 0.4) !important;
+}
+
+/* =========================================
+   7. Q&A PAGE STYLES (DAFTAR TANGGAPAN)
+   ========================================= */
+.qna-section {
+    padding: 60px 20px 100px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.qna-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.qna-header h2 {
+    font-size: 2.5rem;
+    color: #1d419d;
+    margin-bottom: 15px;
+}
+.qna-header p {
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+/* Kartu Percakapan */
+.qna-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(29, 65, 157, 0.05);
+    margin-bottom: 30px;
+    overflow: hidden;
+    border: 1px solid #f1f5f9;
+}
+
+/* Bagian Pertanyaan (Pengunjung) */
+.qna-question {
+    background: #f8fafc;
+    padding: 25px 30px;
+    border-bottom: 1px solid #e2e8f0;
+}
+.qna-question-meta {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.qna-badge {
+    background: #1d419d;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+.qna-question-text {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Bagian Jawaban (Admin) */
+.qna-answer {
+    padding: 25px 30px;
+    background: #ffffff;
+    border-left: 4px solid #1d419d;
+}
+.qna-answer-meta {
+    font-size: 13px;
+    color: #1d419d;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.qna-answer-text {
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.7;
 }

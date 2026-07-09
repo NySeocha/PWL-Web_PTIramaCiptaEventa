@@ -32,6 +32,7 @@ include("../templates/header.php");
             echo "<td style='font-weight: bold; color: #2980b9;'>$data[kategori]</td>";
             echo "<td>$data[pesan]</td>";
             echo "<td>
+                    <a href=\"balas_tamu.php?id=$data[id_tamu]\" style='color:#1d419d; font-weight:bold;'>Balas</a> |
                     <a href=\"edit_tamu.php?id=$data[id_tamu]\" style='color:green;'>Edit</a> | 
                     <a href=\"hapus_tamu.php?id=$data[id_tamu]\" style='color:red;' onclick=\"return confirm('Hapus pesan ini?')\">Hapus</a>
                   </td>";

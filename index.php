@@ -3,8 +3,10 @@
 <!-- Area Gambar Layar Penuh -->
 <section class="hero-fullscreen">
     <div class="hero-content">
-        <h1>Leading Concert Organizer In Asia</h1>
-        <p>PT Irama Cipta Eventa menghadirkan pengalaman hiburan kelas dunia secara langsung. Kami menyatukan penggemar dengan superstar internasional dan artis regional melalui pertunjukan langsung yang luar biasa dan tak terlupakan.</p>
+        <h1>Solusi Utama untuk Setiap Momen Spektakuler</h1>
+        <p>Dari pertunjukan panggung megah hingga acara perusahaan yang profesional, <b>PT Irama Cipta Eventa</b> menghadirkan 
+            pengalaman langsung yang tak tertandingi. Kami mendesain setiap detail dengan standar internasional untuk 
+            memastikan acara Anda berjalan sempurna dan tak terlupakan.</p>
         
         <!-- Dua Tombol Berdampingan -->
         <div class="hero-buttons">

@@ -1,25 +1,42 @@
 <?php include("templates/header.php"); ?>
-<div style="margin: 20px;">
-    <h3>Form Hubungi PT Irama Cipta Eventa</h3>
-    <form method="get" action="input_tamu.php" style="background-color: #f9f9f9; padding: 20px; width: 350px; border: 1px solid #ddd;">
-        <label>Nama Lengkap:</label><br>
-        <input type="text" name="nama" required style="width: 100%; margin-bottom: 15px;"><br>
+
+<section class="hero-contact">
+    <div class="hero-content">
+        <h1>Connect With Us</h1>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <p style="color: #64748b; font-size: 1.1rem; max-width: 450px; margin: 0 auto; line-height: 1.6;">
+            Punya konsep acara impian atau ajakan kolaborasi seru? Kirimkan pesanmu di bawah ini, tim promotor kami akan segera menghubungimu!
+        </p>
+    </div>
+
+    <form method="get" action="input_tamu.php" class="contact-card-form">
+        <label>Nama Lengkap</label>
+        <input type="text" name="nama" required placeholder="Masukkan nama Anda...">
         
-        <label>Alamat Email:</label><br>
-        <input type="email" name="email" required style="width: 100%; margin-bottom: 15px;"><br>
+        <label>Alamat Email</label>
+        <input type="email" name="email" required placeholder="nama@email.com">
         
-        <label>Keperluan / Kategori:</label><br>
-        <select name="kategori" style="width: 104%; padding: 5px; margin-bottom: 15px;">
+        <label>Kategori Keperluan</label>
+        <select name="kategori">
             <option value="Ajukan Pertanyaan">Ajukan Pertanyaan</option>
             <option value="Ajukan Kerjasama">Ajukan Kerjasama</option>
             <option value="Tinggalkan Pesan">Tinggalkan Pesan</option>
-        </select><br>
+        </select>
         
-        <label>Pesan / Masukan:</label><br>
-        <textarea name="pesan" rows="5" required style="width: 100%; margin-bottom: 15px;"></textarea><br>
+        <label>Pesan / Ide Kreatif</label>
+        <textarea name="pesan" rows="5" required placeholder="Tuliskan detail rencana atau pertanyaan Anda di sini..."></textarea>
         
-        <input type="submit" name="Submit" value="Kirim Komunikasi" style="padding: 8px 15px; background-color: #2c3e50; color: white; border: none; cursor: pointer;">
+        <input type="submit" name="Submit" value="Kirim Pesan Sekarang">
     </form>
-</div>
+</section>
+
+<a href="https://wa.me/6281234567890" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
 </body>
 </html>

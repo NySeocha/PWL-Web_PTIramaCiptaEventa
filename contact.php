@@ -7,7 +7,7 @@
 
     <?php 
     // Memanggil file menu menggunakan require
-    require("menu.php"); 
+    include("templates/header.php"); 
     ?>
 
     <h3>Contact Perusahaan</h3>

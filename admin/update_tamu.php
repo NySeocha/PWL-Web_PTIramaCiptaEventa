@@ -1,13 +1,12 @@
 <?php
-include ("koneksi.php");
+include("../config/koneksi.php");
 
 $id = $_GET['id'];
 $nama = $_GET['nama'];
 $email = $_GET['email'];
-$kategori = $_GET['kategori']; // Menangkap data perubahan kategori
+$kategori = $_GET['kategori'];
 $pesan = $_GET['pesan'];
 
-// Memasukkan kolom kategori ke dalam perintah set update
 $update = "update buku_tamu set nama = '$nama', email = '$email', kategori = '$kategori', pesan = '$pesan' where id_tamu = '$id'";
 $hasil = mysqli_query($konek, $update);
 

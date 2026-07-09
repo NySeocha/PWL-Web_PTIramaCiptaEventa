@@ -1,30 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Profil - PT Irama Cipta Eventa</title>
-</head>
-<body style="font-family: Arial, sans-serif;">
+<?php include("templates/header.php"); ?>
 
-    <?php 
-    // Memanggil file menu menggunakan include
-    include("menu.php"); 
-    ?>
-
-    <h3>Profil Perusahaan</h3>
-    <p>
-        <strong>PT Irama Cipta Eventa</strong> adalah Event Organizer (EO) dan promotor profesional yang berfokus pada 
-        penyelenggaraan acara hiburan, festival kreatif, dan pameran. Kami berkomitmen untuk menghadirkan pengalaman acara 
-        yang rapi, berkesan, dan terorganisir dengan baik dari tahap perencanaan hingga eksekusi.
-        <br>
-        <strong>PT Irama Cipta Eventa</strong> adalah agensi manajemen acara dan kreatif terkemuka yang berdedikasi untuk merancang, merencanakan, 
-        dan mengeksekusi pengalaman yang tak terlupakan. Berbekal rekam jejak yang kuat dan tim profesional yang berpengalaman di 
-        industri kreatif, kami memadukan inovasi, estetika, dan ketepatan operasional untuk membawa setiap visi menjadi kenyataan.
+<!-- Area Gambar Layar Penuh -->
+<section class="hero-fullscreen">
+    <div class="hero-content">
+        <h1>Leading Concert Organizer In Asia</h1>
+        <p>PT Irama Cipta Eventa menghadirkan pengalaman hiburan kelas dunia secara langsung. Kami menyatukan penggemar dengan superstar internasional dan artis regional melalui pertunjukan langsung yang luar biasa dan tak terlupakan.</p>
         
-        Kami memahami bahwa setiap acara adalah medium komunikasi strategis yang krusial. Oleh karena itu, kami berkomitmen 
-        untuk menghadirkan standar keunggulan tertinggi dalam setiap proyek—mulai dari tahap kurasi konsep awal hingga tata 
-        laksana eksekusi akhir di lapangan. Dengan pendekatan yang berpusat pada solusi, PT Irama Cipta Eventa terus menjadi 
-        mitra strategis pilihan bagi berbagai skala bisnis dan instansi.
-    </p>
+        <!-- Dua Tombol Berdampingan -->
+        <div class="hero-buttons">
+            <a href="#" class="btn-pill">View Upcoming Concerts</a>
+            <a href="/MarenaIntanFaylisa/irama_cipta/form_tamu.php" class="btn-pill">Partner With Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- Tombol WhatsApp Mengambang di Kanan Bawah -->
+<a href="https://wa.me/6281234567890" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>=
 
 </body>
 </html>

@@ -7,7 +7,7 @@
 
     <?php 
     // Memanggil file menu menggunakan include
-    include("menu.php"); 
+    include("templates/header.php"); 
     ?>
 
     <h3>Visi dan Misi Perusahaan</h3>

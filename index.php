@@ -10,16 +10,12 @@
         
         <!-- Dua Tombol Berdampingan -->
         <div class="hero-buttons">
-            <a href="#" class="btn-pill">View Upcoming Concerts</a>
-            <a href="/MarenaIntanFaylisa/irama_cipta/form_tamu.php" class="btn-pill">Partner With Us</a>
+            <a href="/MarenaIntanFaylisa/irama_cipta/events.php" class="btn-pill">View Upcoming Events</a>
+            <a href="/MarenaIntanFaylisa/irama_cipta/form_tamu.php" class="btn-pill">Connect With Us</a>
         </div>
     </div>
 </section>
 
-<!-- Tombol WhatsApp Mengambang di Kanan Bawah -->
-<a href="https://wa.me/6281234567890" class="wa-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>=
 
 </body>
 </html>

@@ -1,93 +1,101 @@
 /* =========================================
-   1. GLOBAL & RESET
+   1. GLOBAL & RESET (Sleek Dark Mode ala iMe)
    ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    background-color: #fff; /* Latar belakang putih */
-    color: #111; /* Teks gelap untuk keterbacaan */
+    font-family: 'Montserrat', sans-serif; 
+    background-color: #0a0a0a; /* Hitam pekat khas promotor hiburan */
+    color: #e0e0e0; 
 }
-a { text-decoration: none; transition: 0.3s; }
+a { text-decoration: none; transition: 0.3s ease; }
 
 /* =========================================
-   2. HEADER (Latar Belakang Putih Solid)
+   2. HEADER (Glassmorphism & Dark)
    ========================================= */
 .header-transparent {
-    /* Mengubah posisi menjadi sticky agar tetap di atas saat di-scroll */
     position: sticky; 
     top: 0; 
     left: 0; 
     width: 100%;
-    padding: 15px 60px; /* Padding sedikit dikecilkan agar lebih proporsional */
+    padding: 15px 50px; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
     z-index: 1000;
-    
-    /* Perintah utama untuk membuat background menjadi putih */
-    background-color: #ffffff; 
-    
-    /* Tambahan bayangan halus di bawah header agar terlihat mewah */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+    background-color: rgba(10, 10, 10, 0.9); 
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Pengaturan ukuran logo gambar agar proporsional */
 .header-logo img {
-    height: 60px; /* Atur angka ini (besarkan/kecilkan) sesuai kebutuhan visual logomu */
-    width: auto;
+    height: 45px; 
+    padding: 5px 12px;
+    border-radius: 4px;
     display: block;
 }
 
-.header-nav-links { display: flex; gap: 35px; }
+.header-nav-links { display: flex; gap: 30px; }
 .header-nav-links a {
-    color: #111; 
-    font-size: 15px; font-weight: 600; text-transform: capitalize;
-    padding-bottom: 5px; border-bottom: 2px solid transparent;
+    color: #ffffff; 
+    font-size: 13px; 
+    font-weight: 600; 
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding-bottom: 5px; 
 }
 .header-nav-links a:hover, 
 .header-nav-links a.active {
-    color: #1d419d; 
-    border-bottom: 2px solid #1d419d; 
+    color: #ff3366; /* Warna aksen ala konser K-pop */
 }
 
 /* =========================================
-   3. HERO SECTION (Layar Penuh)
+   3. HERO SECTIONS (Layar Penuh Gelap)
    ========================================= */
-.hero-fullscreen {
+.hero-fullscreen, .hero-about, .hero-contact {
     position: relative;
-    height: 100vh; 
     display: flex; align-items: center; justify-content: center; text-align: center;
-    
-    /* Ubah bagian url() agar memanggil folder images lokalmu */
-    background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.7)), 
-                url('/MarenaIntanFaylisa/irama_cipta/assets/images/latar.jpg') no-repeat center center/cover;
-    
     padding: 0 20px;
 }
-.hero-content { max-width: 900px; z-index: 2; }
+.hero-fullscreen {
+    height: 100vh; 
+    background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.95)), 
+                url('../images/latar.jpg') no-repeat center center/cover;
+}
+.hero-about {
+    height: 50vh;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.5), #0a0a0a), 
+                url('../images/latar.jpg') no-repeat center center/cover;
+}
+.hero-contact {
+    height: 50vh;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.5), #0a0a0a), 
+                url('../images/latar.jpg') no-repeat center center/cover;
+}
+
 .hero-content h1 {
-    font-size: 3.8rem; font-weight: 800; margin-bottom: 20px;
-    color: #111; /* Teks judul gelap */
-    letter-spacing: 1px;
-    /* Bayangan teks dihapus karena latar belakang sekarang terang */
+    font-size: 3.5rem; font-weight: 800; text-transform: uppercase;
+    color: #ffffff; letter-spacing: 2px; margin-bottom: 20px;
 }
 .hero-content p {
-    font-size: 1.15rem; line-height: 1.6; margin-bottom: 40px; 
-    color: #333; /* Teks paragraf gelap keabuan */
+    font-size: 1.1rem; color: #bbbbbb; max-width: 800px; margin: 0 auto 40px; line-height: 1.7;
 }
+
 .hero-buttons { display: flex; justify-content: center; gap: 20px; }
 
-/* Tombol Biru Membulat */
+/* Tombol Promotor Klasik */
 .btn-pill {
-    background-color: #1d419d; /* Biru spesifik */
+    background-color: #ff3366; 
     color: #fff;
-    padding: 14px 35px; border-radius: 50px;
-    font-weight: 700; font-size: 1rem; border: 2px solid #1d419d;
-    box-shadow: 0 4px 15px rgba(29, 65, 157, 0.4);
+    padding: 14px 35px; border-radius: 4px; /* Sudut lebih tegas */
+    font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
 }
 .btn-pill:hover { 
-    background-color: transparent; 
-    color: #1d419d; 
+    background-color: #e62e5c; 
+    transform: translateY(-2px); 
 }
 
 /* =========================================
@@ -96,265 +104,361 @@ a { text-decoration: none; transition: 0.3s; }
 .wa-float {
     position: fixed; bottom: 40px; right: 40px;
     width: 60px; height: 60px;
-    /* Tombol WhatsApp tetap hijau agar dapat dikenali sebagai ikon WA,
-       tapi palet warna utama web sudah berubah */
-    background-color: #25D366; 
-    color: #FFF;
-    border-radius: 50px; text-align: center;
-    font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    background-color: #25D366; color: #FFF;
+    border-radius: 50%; text-align: center;
+    font-size: 30px; box-shadow: 2px 2px 15px rgba(0,0,0,0.5);
     z-index: 100; display: flex; align-items: center; justify-content: center;
 }
+.wa-float:hover { transform: scale(1.1); }
 
 /* =========================================
-   5. ABOUT PAGE (VISI & MISI) STYLES
+   5. ABOUT PAGE STYLES
    ========================================= */
-.hero-about {
-    position: relative;
-    height: 65vh; /* Sedikit ditinggikan agar gradasinya lebih halus */
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    
-    /* KUNCI GRADASI SEAMLESS (FADE TO BOTTOM) */
-    background: linear-gradient(
-        to bottom, 
-        rgba(255, 255, 255, 0.1) 0%,   /* Atas (0%): Sangat transparan, gambar terlihat jelas */
-        rgba(255, 255, 255, 0.4) 60%,  /* Tengah (60%): Mulai tertutup warna putih tipis */
-        rgba(255, 255, 255, 1) 100%    /* Bawah (100%): Putih solid, menyatu tanpa batas dengan halaman bawah */
-    ), 
-    url('../images/latar.jpg') no-repeat center center/cover;
-    
-    padding: 0 20px;
-}
+.about-section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+.about-intro { text-align: center; max-width: 900px; margin: 0 auto 60px; }
+.about-intro h2 { font-size: 2rem; color: #ffffff; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; }
+.about-intro p { font-size: 1rem; color: #aaaaaa; line-height: 1.8; text-align: center; }
 
-.hero-about h1 {
-    font-size: 3.5rem; 
-    font-weight: 900; 
-    color: #000000; /* Biru spesifik yang kamu mau */
-    margin-top: 60px;
-    letter-spacing: 1px;
-    text-shadow: 2px 2px 10px rgba(255,255,255,0.8); /* Efek cahaya di belakang teks agar terbaca jika background gelap */
-}
-
-.about-section {
-    padding: 80px 20px;
-    max-width: 1100px; margin: 0 auto;
-}
-.about-intro {
-    text-align: center; max-width: 900px; margin: 0 auto 60px;
-}
-.about-intro h2 { font-size: 2.2rem; color: #111; margin-bottom: 25px; }
-.about-intro p { font-size: 1.1rem; color: #444; line-height: 1.8; text-align: justify; }
-
-.vision-mission-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-}
+.vision-mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .vm-card {
-    background: #f8f9fa; padding: 45px; border-radius: 12px;
-    border-top: 5px solid #1d419d; /* Aksen garis biru di atas kotak */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    background: #141414; padding: 45px; border-radius: 8px;
+    border-top: 3px solid #ff3366;
+    border-bottom: 1px solid #222; border-right: 1px solid #222; border-left: 1px solid #222;
 }
-.vm-card h3 { 
-    font-size: 1.8rem; color: #1d419d; margin-bottom: 20px; 
-    display: flex; align-items: center; gap: 15px; 
-}
-.vm-card p, .vm-card ul { color: #444; line-height: 1.8; font-size: 1.05rem; }
+.vm-card h3 { font-size: 1.4rem; color: #ffffff; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+.vm-card p, .vm-card ul { color: #aaaaaa; line-height: 1.8; font-size: 1rem; }
 .vm-card ul { padding-left: 20px; margin-top: 15px; }
 .vm-card li { margin-bottom: 12px; }
 
-/* Agar desain tetap rapi saat dibuka di HP */
-@media (max-width: 768px) {
-    .vision-mission-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 768px) { .vision-mission-grid { grid-template-columns: 1fr; } }
 
 /* =========================================
-   6. CONTACT PAGE STYLES (FORM TAMU)
+   6. CONTACT PAGE (FORM TAMU)
    ========================================= */
-.hero-contact {
-    position: relative;
-    height: 45vh; 
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    
-    /* Typo 100__ sudah diperbaiki menjadi 100% */
-    background: linear-gradient(
-        to bottom, 
-        rgba(255, 255, 255, 0.1) 0%, 
-        rgba(255, 255, 255, 0.5) 50%, 
-        rgba(255, 255, 255, 1) 100%
-    ), 
-    url('../images/latar.jpg') no-repeat center center/cover;
-    
-    padding: 0 20px;
-}
-.hero-contact h1 {
-    font-size: 3.5rem; font-weight: 900; color: #000000;
-    margin-top: 40px;
-    letter-spacing: 1px;
-    text-shadow: 2px 2px 10px rgba(255,255,255,0.8);
-}
+.contact-section { padding: 40px 20px 80px; max-width: 600px; margin: 0 auto; }
 
-.contact-section {
-    padding: 20px 20px 80px;
-    max-width: 600px; /* Membatasi lebar area formulir agar pas di tengah */
-    margin: 0 auto;
-}
-
-/* Merapikan elemen label agar selalu berada di atas kotak input */
 .contact-card-form label {
-    display: block; /* Kunci agar label tidak bersebelahan dengan input */
-    text-align: left; /* Memastikan teks rata kiri */
-    font-weight: 700;
-    color: #333;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
+    display: block; text-align: left; font-weight: 600; color: #ffffff;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
 }
 
-/* Merapikan kotak input agar lebarnya penuh dan presisi */
 .contact-card-form input[type="text"],
 .contact-card-form input[type="email"],
 .contact-card-form select,
 .contact-card-form textarea {
-    display: block; /* Kotak input turun ke baris baru */
-    width: 100% !important; /* Kotak input dipaksa membentang penuh 100% */
-    box-sizing: border-box; /* Agar padding di dalam tidak membuat kotak meluber keluar */
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 8px !important;
-    padding: 12px 16px !important;
-    background-color: #f8fafc !important;
-    color: #333 !important;
-    font-size: 15px !important;
-    margin-bottom: 25px !important;
-    transition: all 0.3s ease;
+    display: block; width: 100% !important; box-sizing: border-box;
+    border: 1px solid #333 !important; border-radius: 4px !important;
+    padding: 14px 16px !important;
+    background-color: #141414 !important; color: #ffffff !important;
+    font-size: 14px !important; margin-bottom: 25px !important;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .contact-card-form input:focus,
 .contact-card-form select:focus,
 .contact-card-form textarea:focus {
-    border-color: #1d419d !important;
-    background-color: #fff !important;
-    box-shadow: 0 0 0 3px rgba(29, 65, 157, 0.15) !important;
-    outline: none; /* Menghilangkan garis biru bawaan browser yang jelek */
-}
-.contact-card-form input[type="text"],
-.contact-card-form input[type="email"],
-.contact-card-form select,
-.contact-card-form textarea {
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 8px !important;
-    padding: 12px 16px !important;
-    background-color: #f8fafc !important;
-    color: #333 !important;
-    font-size: 15px !important;
-    margin-bottom: 20px !important;
-    transition: all 0.3s ease;
-}
-.contact-card-form input:focus,
-.contact-card-form select:focus,
-.contact-card-form textarea:focus {
-    border-color: #1d419d !important;
-    background-color: #fff !important;
-    box-shadow: 0 0 0 3px rgba(29, 65, 157, 0.15) !important;
+    border-color: #ff3366 !important; outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 51, 102, 0.2) !important;
 }
 
-/* Mengubah tombol kirim menjadi biru solid bulat panjang */
 .contact-card-form input[type="submit"] {
-    background: #1d419d !important;
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    padding: 14px !important;
-    border-radius: 50px !important; /* Bentuk kapsul/pill button */
-    border: none !important;
-    font-size: 16px !important;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(29, 65, 157, 0.3) !important;
-    transition: all 0.3s ease;
+    background: #ff3366 !important; color: #ffffff !important;
+    font-weight: 700 !important; padding: 16px !important;
+    border-radius: 4px !important; border: none !important;
+    font-size: 14px !important; text-transform: uppercase !important; letter-spacing: 1px;
+    cursor: pointer; transition: all 0.3s ease; width: 100%;
 }
-.contact-card-form input[type="submit"]:hover {
-    background: #153073 !important; /* Biru agak gelap saat disentuh kursor */
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(29, 65, 157, 0.4) !important;
-}
+.contact-card-form input[type="submit"]:hover { background: #e62e5c !important; }
 
 /* =========================================
-   7. Q&A PAGE STYLES (DAFTAR TANGGAPAN)
+   7. Q&A PAGE (DAFTAR TANGGAPAN)
    ========================================= */
-.qna-section {
-    padding: 60px 20px 100px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-.qna-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-.qna-header h2 {
-    font-size: 2.5rem;
-    color: #1d419d;
-    margin-bottom: 15px;
-}
-.qna-header p {
-    color: #64748b;
-    font-size: 1.1rem;
-}
+.qna-section { padding: 60px 20px 100px; max-width: 800px; margin: 0 auto; }
+.qna-header { text-align: center; margin-bottom: 50px; }
+.qna-header h2 { font-size: 2rem; color: #ffffff; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
+.qna-header p { color: #888888; font-size: 1rem; }
 
-/* Kartu Percakapan */
 .qna-card {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(29, 65, 157, 0.05);
-    margin-bottom: 30px;
-    overflow: hidden;
-    border: 1px solid #f1f5f9;
+    background: #141414; border-radius: 8px;
+    margin-bottom: 30px; overflow: hidden; border: 1px solid #222;
 }
 
-/* Bagian Pertanyaan (Pengunjung) */
-.qna-question {
-    background: #f8fafc;
-    padding: 25px 30px;
-    border-bottom: 1px solid #e2e8f0;
-}
+.qna-question { background: #1a1a1a; padding: 25px 30px; border-bottom: 1px solid #222; }
 .qna-question-meta {
-    font-size: 13px;
-    color: #64748b;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
+    font-size: 12px; color: #888; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+    display: flex; justify-content: space-between;
 }
 .qna-badge {
-    background: #1d419d;
-    color: #fff;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11px;
+    background: rgba(255, 51, 102, 0.1); color: #ff3366;
+    padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 800;
 }
-.qna-question-text {
-    font-size: 1.1rem;
-    color: #333;
-    line-height: 1.6;
-    font-style: italic;
+.qna-question-text { font-size: 1.05rem; color: #e0e0e0; font-style: italic; }
+
+.qna-answer { padding: 25px 30px; background: #141414; border-left: 3px solid #ff3366; }
+.qna-answer-meta { font-size: 12px; color: #ff3366; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;}
+.qna-answer-text { font-size: 1rem; color: #bbbbbb; line-height: 1.7; }
+
+/* =========================================
+   8. EVENTS PAGE STYLES (events.php)
+   ========================================= */
+.hero-events {
+    position: relative; height: 45vh;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.5), #0a0a0a), 
+                url('../images/latar.jpg') no-repeat center center/cover;
+    padding: 0 20px;
 }
 
-/* Bagian Jawaban (Admin) */
-.qna-answer {
-    padding: 25px 30px;
-    background: #ffffff;
-    border-left: 4px solid #1d419d;
+.event-category-section {
+    padding: 60px 20px; max-width: 1200px; margin: 0 auto;
+    border-bottom: 1px solid #1a1a1a;
 }
-.qna-answer-meta {
-    font-size: 13px;
-    color: #1d419d;
-    font-weight: 700;
+
+.category-header { margin-bottom: 40px; }
+.category-header h2 {
+    font-size: 2rem; color: #ffffff; text-transform: uppercase; 
+    letter-spacing: 1px; display: flex; align-items: center; gap: 15px;
+}
+.category-header h2 i { color: #ff3366; } /* Warna ikon pink khas promotor */
+.category-header p { color: #888888; margin-top: 10px; font-size: 1rem; }
+
+/* Grid untuk Kotak-Kotak Acara */
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* Desain Kartu (Event Card) */
+.event-card {
+    background: #141414; border: 1px solid #222; border-radius: 8px;
+    overflow: hidden; transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.event-card:hover {
+    transform: translateY(-8px); border-color: #ff3366;
+    box-shadow: 0 10px 20px rgba(255, 51, 102, 0.1);
+}
+
+/* Area Gambar Event */
+.event-img {
+    width: 100%; height: 220px;
+    background-color: #222; background-position: center; background-size: cover;
+    position: relative; border-bottom: 1px solid #222;
+}
+
+.event-info { padding: 25px; position: relative; }
+
+/* Label (Badge) Status Event */
+.event-badge {
+    position: absolute; top: -15px; right: 20px;
+    background: #ff3366; color: #fff;
+    padding: 6px 15px; font-size: 11px; font-weight: 800;
+    text-transform: uppercase; border-radius: 4px; letter-spacing: 1px;
+}
+.event-badge.selesai { background: #333; color: #888; } /* Warna abu jika acara sudah selesai */
+
+.event-info h3 {
+    font-size: 1.3rem; color: #ffffff; margin-bottom: 15px; line-height: 1.4;
+}
+
+.event-detail {
+    color: #aaaaaa; font-size: 0.95rem; margin-bottom: 8px; 
+    display: flex; align-items: center; gap: 10px;
+}
+.event-detail i { color: #ff3366; width: 15px; text-align: center; }
+
+/* Tombol Detail Card */
+.btn-event {
+    display: inline-block; margin-top: 20px; padding: 10px 20px;
+    border: 1px solid #ff3366; color: #ff3366; border-radius: 4px;
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+}
+.btn-event:hover { background: #ff3366; color: #fff; }
+
+/* =========================================
+   GAYA KHUSUS DAFTAR PAKET JASA (PACKAGE LIST)
+   ========================================= */
+.package-features {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 20px 0;
+}
+
+.package-features li {
+    color: #bbbbbb;
+    font-size: 0.9rem;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
-.qna-answer-text {
-    font-size: 1.05rem;
-    color: #444;
-    line-height: 1.7;
+
+/* Mengubah warna ikon centang menjadi pink khas tema */
+.package-features li i {
+    color: #ff3366;
+    font-size: 0.8rem;
+}
+
+/* =========================================
+   9. EVENT DETAIL PAGE STYLES
+   ========================================= */
+.event-detail-container {
+    max-width: 1100px;
+    margin: -40px auto 80px; /* Menarik konten sedikit ke atas menimpa banner */
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.event-detail-layout {
+    display: grid;
+    grid-template-columns: 4fr 6fr; /* Poster 40%, Info 60% */
+    gap: 50px;
+    background: #141414;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #222;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+.event-poster {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border: 1px solid #333;
+}
+
+.event-title-large {
+    font-size: 2.2rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.event-meta-box {
+    background: #0a0a0a;
+    padding: 20px;
+    border-left: 3px solid #ff3366;
+    margin-bottom: 30px;
+}
+.event-meta-box p {
+    color: #cccccc;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.event-meta-box p:last-child { margin-bottom: 0; }
+.event-meta-box i { color: #ff3366; font-size: 1.2rem; width: 20px; text-align: center; }
+
+.event-description h3, .ticket-info h3 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+.event-description p {
+    color: #aaaaaa;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+/* List Harga Tiket */
+.ticket-list { list-style: none; padding: 0; }
+.ticket-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px dashed #333;
+}
+.ticket-cat { font-weight: 700; color: #e0e0e0; letter-spacing: 0.5px; }
+.ticket-price { color: #ff3366; font-weight: 800; font-size: 1.1rem; }
+
+/* Warna penanda kategori tiket */
+.ticket-cat.vip::before { content: '■'; color: #ff3366; margin-right: 8px; }
+.ticket-cat.cat1::before { content: '■'; color: #3498db; margin-right: 8px; }
+.ticket-cat.cat2::before { content: '■'; color: #f1c40f; margin-right: 8px; }
+
+/* Responsif untuk HP */
+@media (max-width: 768px) {
+    .event-detail-layout { grid-template-columns: 1fr; gap: 30px; padding: 20px; }
+    .event-title-large { font-size: 1.8rem; }
+}
+
+/* =========================================
+   11. CONTACT SPLIT LAYOUT STYLES
+   ========================================= */
+.contact-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Membagi dua kolom sama besar (50% : 50%) */
+    background: #141414;
+    border-radius: 8px;
+    border: 1px solid #222;
+    overflow: hidden; /* Mencegah gambar keluar dari sudut yang membulat */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Area Gambar Kiri */
+.contact-image-wrapper {
+    width: 100%;
+    height: 100%;
+}
+.contact-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar tidak gepeng */
+    display: block;
+    filter: grayscale(15%); /* Menyesuaikan dengan nuansa dark mode */
+}
+
+/* Area Form Kanan */
+.contact-form-wrapper {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Memperbaiki jarak antar elemen di dalam form khusus layout ini */
+.contact-card-form input[type="text"],
+.contact-card-form input[type="email"],
+.contact-card-form select,
+.contact-card-form textarea {
+    margin-bottom: 20px !important; 
+}
+
+/* Tata Letak Responsif (Saat dibuka di HP, form akan turun ke bawah gambar) */
+@media (max-width: 768px) {
+    .contact-split-layout {
+        grid-template-columns: 1fr; /* Mengubah kolom menjadi atas-bawah */
+    }
+    .contact-form-wrapper {
+        padding: 30px; 
+    }
+    .contact-image-wrapper img {
+        height: 250px; /* Membatasi tinggi gambar saat di HP */
+    }
+}
+
+/* Mengatur wadah galeri menjadi persis 2 kolom */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Membagi menjadi 2 kolom sama besar */
+    gap: 20px; /* Jarak antar gambar */
+}
+
+/* Memastikan gambar di dalamnya memenuhi kotaknya */
+.gallery-item img {
+    width: 100%;
+    height: 300px; /* Sesuaikan tinggi gambar sesuai selera */
+    object-fit: cover;
+    display: block;
 }

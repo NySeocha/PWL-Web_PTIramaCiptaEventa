@@ -10,8 +10,12 @@ $input = "insert into buku_tamu (nama, email, kategori, pesan) values ('$nama', 
 $hasil = mysqli_query($konek, $input);
 
 if ($hasil) {
-    header("location:admin/tampil_tamu_tabel.php");
+    // Redirect kembali ke form dengan membawa parameter sukses
+    header("Location: form_tamu.php?status=success");
+    exit(); // Selalu gunakan exit setelah header location
 } else {
-    echo 'Data tidak berhasil disimpan ke sistem.';
+    // Redirect kembali ke form dengan membawa parameter error
+    header("Location: form_tamu.php?status=error");
+    exit();
 }
 ?>

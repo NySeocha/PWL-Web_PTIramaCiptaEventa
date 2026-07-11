@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2026 at 09:09 PM
+-- Generation Time: Jul 11, 2026 at 09:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,9 +31,19 @@ CREATE TABLE `buku_tamu` (
   `id_tamu` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `kategori` varchar(50) NOT NULL,
   `pesan` text NOT NULL,
+  `jawaban` text DEFAULT NULL,
   `tanggal_isi` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `buku_tamu`
+--
+
+INSERT INTO `buku_tamu` (`id_tamu`, `nama`, `email`, `kategori`, `pesan`, `jawaban`, `tanggal_isi`) VALUES
+(1, 'Bine', 'binera@gmail.com', 'Ajukan Pertanyaan', 'Kapan Festival Hiphop di Jakarta?', NULL, '2026-06-24 20:09:51'),
+(2, 'm', 'u@gmail.com', 'Tinggalkan Pesan', 'baik', 'oke', '2026-07-08 20:40:39');
 
 -- --------------------------------------------------------
 
@@ -64,6 +74,26 @@ CREATE TABLE `klien` (
   `alamat` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id_user` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id_user`, `username`, `password`, `role`) VALUES
+(1, 'admin_irama', 'rahasia123', 'admin');
+
 --
 -- Indexes for dumped tables
 --
@@ -87,6 +117,12 @@ ALTER TABLE `klien`
   ADD PRIMARY KEY (`id_klien`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -94,7 +130,7 @@ ALTER TABLE `klien`
 -- AUTO_INCREMENT for table `buku_tamu`
 --
 ALTER TABLE `buku_tamu`
-  MODIFY `id_tamu` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tamu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `jadwal_event`
@@ -107,6 +143,12 @@ ALTER TABLE `jadwal_event`
 --
 ALTER TABLE `klien`
   MODIFY `id_klien` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

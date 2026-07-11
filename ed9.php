@@ -46,7 +46,7 @@ include("templates/header.php");
 
             <!-- Tombol Beli / Hubungi -->
             <div class="action-buttons" style="margin-top: 30px;">
-                <a href="#" class="btn-pill" style="width: 100%; text-align: center; display: block; font-size: 16px;">Buy Tickets Now</a>
+                <a href="beli_tiket.php?id=9" class="btn-pill" style="width: 100%; text-align: center; display: block; font-size: 16px;">Buy Tickets Now</a>
             </div>
 
         </div>

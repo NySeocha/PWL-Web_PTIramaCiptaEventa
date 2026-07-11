@@ -64,5 +64,7 @@ include("config/koneksi.php");
     <i class="fab fa-whatsapp"></i>
 </a>
 
+<?php include("templates/footer.php"); ?>
+
 </body>
 </html>

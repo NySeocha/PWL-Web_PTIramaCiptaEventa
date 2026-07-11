@@ -462,3 +462,283 @@ a { text-decoration: none; transition: 0.3s ease; }
     object-fit: cover;
     display: block;
 }
+
+/* =========================================
+   12. LOGIN PAGE STYLES (Glassmorphism)
+   ========================================= */
+.login-body {
+    /* Background gambar dengan lapisan warna hitam transparan */
+    background: linear-gradient(rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.95)), url('../images/latar.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Tombol kembali di sudut kiri atas */
+.back-home-btn {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.back-home-btn:hover {
+    color: #ff3366;
+}
+
+/* Kotak Login (Efek Kaca) */
+.login-container {
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(15px); /* Memberikan efek kaca berembun/blur */
+    padding: 50px 40px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+.login-logo {
+    height: 50px;
+    padding: 5px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+.login-header h2 {
+    color: #ffffff;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+.login-header p {
+    color: #888888;
+    font-size: 0.9rem;
+}
+
+/* Input Form dengan Icon */
+.login-form .input-group {
+    margin-bottom: 25px;
+}
+.login-form label {
+    display: block;
+    color: #bbbbbb;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.input-icon {
+    position: relative;
+}
+.input-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666666;
+}
+.input-icon input {
+    width: 100%;
+    background: #111111;
+    border: 1px solid #333333;
+    padding: 14px 15px 14px 45px;
+    color: #ffffff;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+.input-icon input:focus {
+    border-color: #ff3366;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 51, 102, 0.2);
+}
+
+/* Tombol Login */
+.btn-login {
+    width: 100%;
+    background: #ff3366;
+    color: #ffffff;
+    border: none;
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+.btn-login:hover {
+    background: #e62e5c;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 51, 102, 0.2);
+}
+
+/* =========================================
+   13. FOOTER STYLES
+   ========================================= */
+.footer-section {
+    background: #050505; /* Warna hitam pekat untuk footer */
+    color: #cccccc;
+    padding: 70px 20px 20px;
+    border-top: 1px solid #222;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* Membagi menjadi 3 kolom */
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.footer-about h3, .footer-links h3, .footer-contact h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-about p {
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    color: #aaaaaa;
+}
+
+/* Ikon Sosial Media */
+.social-icons a {
+    color: #ffffff;
+    background: #1a1a1a;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid #333;
+}
+.social-icons a:hover {
+    background: #ff3366;
+    border-color: #ff3366;
+    transform: translateY(-5px);
+}
+
+/* Tautan Cepat (Quick Links) */
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-links ul li {
+    margin-bottom: 15px;
+}
+.footer-links ul li a {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    display: inline-block;
+}
+.footer-links ul li a:hover {
+    color: #ff3366;
+    transform: translateX(5px); /* Efek bergeser sedikit ke kanan saat dihover */
+}
+
+/* Info Kontak */
+.footer-contact p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    color: #aaaaaa;
+}
+.footer-contact i {
+    color: #ff3366;
+    margin-top: 4px;
+}
+
+/* Area Copyright */
+.footer-bottom {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px dashed #222;
+    font-size: 0.85rem;
+    color: #666666;
+    letter-spacing: 0.5px;
+}
+
+/* Responsif untuk Layar HP */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Berubah menjadi memanjang ke bawah */
+        gap: 40px;
+    }
+}
+
+/* =========================================
+   14. PRINT STYLES (Khusus untuk Cetak Nota)
+   ========================================= */
+@media print {
+    /* 1. Sembunyikan Header dan Footer saat halaman dicetak */
+    header, .header-transparent, .footer-section {
+        display: none !important;
+    }
+    
+    /* 2. Sembunyikan Tombol "Cetak" dan "Kembali" agar tidak ikut ter-print */
+    button, .btn-pill, a[href="index.php"] {
+        display: none !important;
+    }
+
+    /* 3. Bersihkan background halaman menjadi putih murni agar rapi di PDF */
+    body {
+        background: #ffffff !important;
+    }
+    
+    .event-detail-container {
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+
+    /* 4. Paksa warna teks menjadi gelap agar terbaca jelas di kertas/PDF */
+    .event-detail-layout {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important; /* Border tipis untuk kertas */
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+    
+    /* Ubah warna teks yang asalnya putih/abu-abu menjadi hitam saat di-print */
+    .event-detail-layout h2, 
+    .event-detail-layout h3, 
+    .event-detail-layout p, 
+    .event-detail-layout td {
+        color: #000000 !important;
+    }
+}

@@ -20,8 +20,8 @@ if (isset($_POST['login'])) {
         
         // Arahkan ke halaman berdasarkan role
         if ($data['role'] == 'admin') {
-            // PERBAIKAN DI SINI: Mengarah ke nama file yang benar
-            header("location: ../admin/tampil_tamu_tabel.php"); 
+            // UBAH BARIS INI: Mengarah ke beranda admin yang baru
+            header("location: ../admin/admin_dashboard.php"); 
         } else {
             header("location: ../user/user_home.php");
         }
@@ -34,15 +34,41 @@ if (isset($_POST['login'])) {
 <html>
 <head>
     <title>Login - PT Irama Cipta Eventa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css?v=<?php echo time(); ?>">
 </head>
-<body style="font-family: Arial, sans-serif; background-color: #ecf0f1; text-align: center; padding-top: 100px;">
-    <div style="background: white; width: 300px; margin: 0 auto; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-        <h2>Login Sistem</h2>
-        <form method="POST" action="">
-            <input type="text" name="username" placeholder="Username" required style="width: 90%; padding: 10px; margin-bottom: 15px;"><br>
-            <input type="password" name="password" placeholder="Password" required style="width: 90%; padding: 10px; margin-bottom: 15px;"><br>
-            <button type="submit" name="login" style="width: 95%; padding: 10px; background-color: #2c3e50; color: white; border: none; cursor: pointer;">Masuk</button>
+<body class="login-body">
+    
+    <a href="../index.php" class="back-home-btn"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+
+    <div class="login-container">
+        <div class="login-header">
+            <img src="../assets/images/logoo.png" alt="Logo Irama Cipta" class="login-logo">
+            <h2>System Login</h2>
+            <p>Silakan masuk untuk mengelola portal PT Irama Cipta Eventa.</p>
+        </div>
+        
+        <form method="POST" action="" class="login-form">
+            <div class="input-group">
+                <label>Username</label>
+                <div class="input-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" placeholder="Masukkan username..." required>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label>Password</label>
+                <div class="input-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="Masukkan password..." required>
+                </div>
+            </div>
+            
+            <button type="submit" name="login" class="btn-login">Masuk Sekarang</button>
         </form>
     </div>
+
 </body>
 </html>

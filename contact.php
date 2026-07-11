@@ -18,5 +18,7 @@
         <li><strong>Email:</strong> partnership@iramaciptaeventa.co.id</li>
     </ul>
 
+<?php include("templates/footer.php"); ?>
+
 </body>
 </html>

@@ -1,20 +1,29 @@
 <?php
 include("config/koneksi.php");
 
+// Menangkap data dari form URL (GET)
 $nama = $_GET['nama'];
 $email = $_GET['email'];
 $kategori = $_GET['kategori']; 
 $pesan = $_GET['pesan'];
 
-$input = "insert into buku_tamu (nama, email, kategori, pesan) values ('$nama', '$email', '$kategori', '$pesan')";
-$hasil = mysqli_query($konek, $input);
+// 1. Simpan ke Buku Tamu (Inbox Umum Admin)
+$input_tamu = "INSERT INTO buku_tamu (nama, email, kategori, pesan) VALUES ('$nama', '$email', '$kategori', '$pesan')";
+$hasil_tamu = mysqli_query($konek, $input_tamu);
 
-if ($hasil) {
-    // Redirect kembali ke form dengan membawa parameter sukses
+// 2. LOGIKA PINTAR: Cabang Otomatisasi untuk Tabel Klien
+if ($kategori == 'Ajukan Kerjasama') {
+    $input_klien = "INSERT INTO klien (nama_klien, kontak, jenis_kerjasama) VALUES ('$nama', '$email', 'Prospek Kerjasama Baru')";
+    
+    // Mengeksekusi query tambahan ke tabel klien
+    mysqli_query($konek, $input_klien);
+}
+
+// 3. Mengembalikan status ke form publik beserta notifikasi JavaScript
+if ($hasil_tamu) {
     header("Location: form_tamu.php?status=success");
-    exit(); // Selalu gunakan exit setelah header location
+    exit();
 } else {
-    // Redirect kembali ke form dengan membawa parameter error
     header("Location: form_tamu.php?status=error");
     exit();
 }

@@ -29,5 +29,7 @@ if ($_SESSION['status'] != "login") {
         <a href="../auth/logout.php" style="padding: 10px 15px; background-color: #e74c3c; color: white; text-decoration: none; border-radius: 4px;">Keluar Sistem</a>
     </div>
 
+<?php include("templates/footer.php"); ?>    
+
 </body>
 </html>

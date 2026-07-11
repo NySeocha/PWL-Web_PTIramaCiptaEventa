@@ -206,6 +206,7 @@ include("templates/header.php");
     </div>
 </section>
 
+<?php include("templates/footer.php"); ?>
 
 </body>
 </html>

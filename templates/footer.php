@@ -32,6 +32,6 @@
     </div>
     
     <div class="footer-bottom">
-        <p>&copy; <?php echo date("Y"); ?> PT Irama Cipta Eventa. All Rights Reserved. | Developed by Kelompok 3</p>
+        <p>&copy; <?php echo date("Y"); ?> PT Irama Cipta Eventa. All Rights Reserved. | Developed by NySeocha</p>
     </div>
 </footer>

@@ -43,7 +43,7 @@ include("templates/header.php");
         
         <div class="gallery-grid">
             <div class="gallery-item"><img src="assets/images/peg21.jpeg" alt="Keseruan Acara 1"></div>
-            <div class="gallery-item"><img src="assets/images/peg22.jpg" alt="Keseruan Acara 2"></div>
+            <div class="gallery-item"><img src="assets/images/peg22.jpeg" alt="Keseruan Acara 2"></div>
             <div class="gallery-item"><img src="assets/images/peg23.jpeg" alt="Keseruan Acara 3"></div>
         </div>
     </div>

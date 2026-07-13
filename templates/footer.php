@@ -5,9 +5,9 @@
             <h3>Irama Cipta Eventa</h3>
             <p>Mewujudkan euforia maksimal dan pengalaman tak terlupakan di setiap panggung. Promotor resmi pilihan Anda untuk konser dan festival berskala internasional.</p>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/izmemarr_" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/62881024442808" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.youtube.com/@marrenaa03" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
 
@@ -26,7 +26,7 @@
             <h3>Contact Info</h3>
             <p><i class="fas fa-map-marker-alt"></i> Jakarta Timur, DKI Jakarta</p>
             <p><i class="fas fa-envelope"></i> partnership@iramacipta.com</p>
-            <p><i class="fas fa-phone-alt"></i> +62 812-3456-7890</p>
+            <p><i class="fas fa-phone-alt"></i> +62 881-0244-42808</p>
         </div>
         
     </div>

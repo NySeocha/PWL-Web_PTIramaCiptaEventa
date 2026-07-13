@@ -13,6 +13,7 @@ $query = "SELECT transaksi_tiket.*, jadwal_event.nama_event
           ORDER BY transaksi_tiket.id_transaksi DESC";
 $hasil = mysqli_query($konek, $query);
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +34,7 @@ $hasil = mysqli_query($konek, $query);
             <li><a href="kelola_klien.php"><i class="fas fa-users"></i> Kelola Klien</a></li>
             <li><a href="kelola_event.php"><i class="fas fa-calendar-alt"></i> Kelola Event</a></li>
             <li><a href="kelola_transaksi.php" class="active"><i class="fas fa-ticket-alt"></i> Penjualan Tiket</a></li>
+            <!-- <li><a href="kelola_galeri.php"><i class="fas fa-images"></i> Kelola Galeri Acara</a></li> -->
             <li><a href="../auth/logout.php" style="color: #e74c3c; margin-top: 20px;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </div>
@@ -56,6 +58,8 @@ $hasil = mysqli_query($konek, $query);
                         <th>Qty</th>
                         <th>Total Bayar</th>
                         <th>Waktu Beli</th>
+                        <th>Status Pembayaran</th>
+                        <th>Bukti & Validasi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,6 +78,24 @@ $hasil = mysqli_query($konek, $query);
                             // Format Rupiah
                             echo "<td style='color: #2ecc71; font-weight: bold;'>Rp " . number_format($data['total_bayar'], 0, ',', '.') . "</td>";
                             echo "<td style='font-size: 12px; color: #666;'>" . $data['tanggal_transaksi'] . "</td>";
+                            // -- LOGIKA WARNA STATUS --
+                            if ($data['status_pembayaran'] == 'Menunggu Validasi') {
+                                $warna = "#f39c12"; // Oranye
+                            } elseif ($data['status_pembayaran'] == 'Lunas') {
+                                $warna = "#2ecc71"; // Hijau
+                            } else {
+                                $warna = "#e74c3c"; // Merah (Ditolak)
+                            }
+                            
+                            // CETAK STATUS
+                            echo "<td><span style='background: $warna; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;'>" . htmlspecialchars($data['status_pembayaran']) . "</span></td>";
+                            
+                            // CETAK TOMBOL AKSI
+                            echo "<td style='display: flex; gap: 5px;'>
+                                    <a href='../assets/uploads/" . $data['bukti_bayar'] . "' target='_blank' class='btn-sm' style='background: #3498db; color: white; border: none; padding: 5px 10px; text-decoration: none;' title='Lihat Struk'><i class='fas fa-image'></i> Lihat</a>
+                                    
+                                    <a href='proses_validasi.php?id=" . $data['id_transaksi'] . "&status=Lunas' class='btn-sm' style='background: #2ecc71; color: white; border: none; padding: 5px 10px; text-decoration: none;' onclick=\"return confirm('Validasi tiket menjadi LUNAS?')\"><i class='fas fa-check'></i> Lunas</a>
+                                </td>";
                             echo "</tr>";
                         }
                     } else {

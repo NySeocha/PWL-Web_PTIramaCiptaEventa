@@ -14,6 +14,13 @@ body { background-color: #f4f7f6; color: #333; display: flex; }
 .sidebar-menu li a:hover, .sidebar-menu li a.active { background: #1a1a1a; color: #1d419d; border-left: 4px solid #1d419d; }
 .sidebar-menu li a i { width: 25px; }
 
+/* Tambahan ini wajib ada agar konten kanan tidak tertimpa sidebar hitam */
+.main-content {
+    margin-left: 250px; 
+    width: calc(100% - 250px);
+    padding: 30px;
+}
+
 /* =========================================
    MAIN CONTENT AREA
    ========================================= */
@@ -75,3 +82,104 @@ body { background-color: #f4f7f6; color: #333; display: flex; }
 .info-group { margin-bottom: 20px; }
 .info-group label { display: block; font-size: 12px; color: #888; text-transform: uppercase; font-weight: bold; margin-bottom: 5px; }
 .info-group p { font-size: 16px; color: #333; font-weight: 500; }
+
+/* =======================================
+   RESET DASAR & BODY
+   ======================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #f4f6f9; /* Warna abu-abu terang */
+    min-height: 100vh;
+}
+
+/* =======================================
+   STYLING SIDEBAR (KIRI)
+   ======================================= */
+.sidebar {
+    width: 250px;
+    background-color: #111111; /* Warna hitam pekat */
+    color: white;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-brand {
+    padding: 25px 20px;
+    text-align: center;
+    border-bottom: 1px solid #222;
+}
+
+.sidebar-brand h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.sidebar-brand p {
+    font-size: 12px;
+    color: #888;
+}
+
+.nav-menu {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.nav-menu li {
+    margin-bottom: 5px;
+}
+
+.nav-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu li a i {
+    width: 25px;
+    font-size: 16px;
+}
+
+/* Efek saat kursor diarahkan atau menu sedang aktif */
+.nav-menu li a:hover, 
+.nav-menu li a.active {
+    background-color: #1a1a1a;
+    color: #3b5998; /* Warna biru aksen */
+    border-left: 4px solid #3b5998;
+}
+
+/* Khusus tombol logout berwarna merah */
+.nav-menu li a.logout {
+    color: #e74c3c;
+    margin-top: 20px;
+}
+
+.nav-menu li a.logout:hover {
+    background-color: #1a1a1a;
+    border-left: 4px solid #e74c3c;
+}
+
+/* =======================================
+   STYLING KONTEN UTAMA (KANAN)
+   ======================================= */
+.main-content {
+    margin-left: 250px; /* Digeser ke kanan selebar ukuran sidebar */
+    width: calc(100% - 250px);
+    padding: 30px;
+}

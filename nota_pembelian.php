@@ -2,11 +2,25 @@
 include("templates/header.php"); 
 include("config/koneksi.php");
 
+// 1. Cek keamanan: Apakah ada ID di URL? Jika tidak, tendang kembali ke index
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    echo "<script>alert('Halaman tidak valid atau ID tidak ditemukan!'); window.location='index.php';</script>";
+    exit; // Menghentikan eksekusi layar error di bawahnya
+}
+
 $id = $_GET['id'];
+
+// 2. Eksekusi pencarian data
 $query = mysqli_query($konek, "SELECT transaksi_tiket.*, jadwal_event.nama_event FROM transaksi_tiket 
                                LEFT JOIN jadwal_event ON transaksi_tiket.id_event = jadwal_event.id_event 
                                WHERE transaksi_tiket.id_transaksi='$id'");
 $data = mysqli_fetch_assoc($query);
+
+// 3. Cek keamanan: Apakah datanya benar-benar ada di database?
+if (!$data) {
+    echo "<script>alert('Data transaksi tidak ditemukan!'); window.location='index.php';</script>";
+    exit;
+}
 
 // Fallback jika nama event null
 $event_name = $data['nama_event'] ? $data['nama_event'] : "Hiphop Fest: Changbin & Friends";

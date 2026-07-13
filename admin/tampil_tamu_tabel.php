@@ -31,6 +31,7 @@ include("../config/koneksi.php");
             <li><a href="tampil_tamu_tabel.php" class="active"><i class="fas fa-envelope"></i> Pesan Masuk</a></li>
             <li><a href="kelola_klien.php"><i class="fas fa-users"></i> Kelola Klien</a></li>
             <li><a href="kelola_event.php"><i class="fas fa-calendar-alt"></i> Kelola Event</a></li>
+            <!-- <li><a href="kelola_galeri.php"><i class="fas fa-images"></i> Kelola Galeri Acara</a></li> -->
             <li><a href="kelola_transaksi.php"><i class="fas fa-ticket-alt"></i> Penjualan Tiket</a></li>
             <li><a href="../auth/logout.php" style="color: #e74c3c;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>

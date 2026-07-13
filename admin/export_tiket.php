@@ -31,6 +31,8 @@ $hasil = mysqli_query($konek, $query);
             <th>Jumlah Tiket</th>
             <th>Total Bayar (Rp)</th>
             <th>Waktu Transaksi</th>
+            <th>Status Pembayaran</th>
+            <th>Bukti Transfer</th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +47,17 @@ $hasil = mysqli_query($konek, $query);
             echo "<td>" . $data['jumlah_tiket'] . "</td>";
             echo "<td>" . $data['total_bayar'] . "</td>";
             echo "<td>" . $data['tanggal_transaksi'] . "</td>";
+            
+            // Tambahkan 2 baris ini untuk Excel
+            echo "<td>" . $data['status_pembayaran'] . "</td>";
+            
+            // Untuk bukti, kita cetak nama filenya. Jika kosong, tulis "Belum Upload"
+            if (!empty($data['bukti_bayar'])) {
+                echo "<td>" . $data['bukti_bayar'] . "</td>";
+            } else {
+                echo "<td>Belum Upload</td>";
+            }
+            
             echo "</tr>";
         }
         ?>

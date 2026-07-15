@@ -1,74 +1,65 @@
 <?php
 session_start();
-include("../config/koneksi.php"); // Memanggil koneksi database
 
-// Jika tombol login ditekan
+// Mencegah akses jika sudah login
+if (isset($_SESSION['user_id'])) {
+    if ($_SESSION['level'] == 'admin') {
+        header("location: ../admin/index.php");
+    } else {
+        header("location: ../index.php");
+    }
+    exit;
+}
+
+// 1. Panggil koneksi dari luar folder
+include("../config/koneksi.php");
+
+// 2. Logika proses login
 if (isset($_POST['login'])) {
-    $username = $_POST['username'];
+    $username = mysqli_real_escape_string($konek, $_POST['username']);
     $password = $_POST['password'];
 
-    // Cek kecocokan data di database
-    $cek = mysqli_query($konek, "SELECT * FROM users WHERE username='$username' AND password='$password'");
-    
-    if (mysqli_num_rows($cek) > 0) {
-        $data = mysqli_fetch_array($cek);
+    $query = mysqli_query($konek, "SELECT * FROM users WHERE username='$username'");
+    $data = mysqli_fetch_assoc($query);
+
+    if ($data && (password_verify($password, $data['password']) || $password == $data['password'])) {
         
-        // Menyimpan sesi
-        $_SESSION['username'] = $data['username'];
-        $_SESSION['role'] = $data['role'];
-        $_SESSION['status'] = "login";
-        
-        // Arahkan ke halaman berdasarkan role
-        if ($data['role'] == 'admin') {
-            // UBAH BARIS INI: Mengarah ke beranda admin yang baru
-            header("location: ../admin/admin_dashboard.php"); 
+        $_SESSION['user_id']   = $data['id_user'];
+        $_SESSION['username']  = $data['username'];
+        $_SESSION['nama']      = $data['nama_lengkap'];
+        $_SESSION['level']     = $data['level'];
+
+        if ($data['level'] == 'admin') {
+            echo "<script>alert('Selamat datang, Admin!'); window.location='../admin/index.php';</script>";
         } else {
-            header("location: ../user/user_home.php");
+            echo "<script>alert('Login berhasil!'); window.location='../index.php';</script>";
         }
     } else {
-        echo "<script>alert('Username atau Password salah!'); window.location='login.php';</script>";
+        echo "<script>alert('Username atau Password salah!');</script>";
     }
 }
+
+// 3. PANGGIL HEADER DI SINI
+include("../templates/header.php"); 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login - PT Irama Cipta Eventa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css?v=<?php echo time(); ?>">
-</head>
-<body class="login-body">
-    
-    <a href="../index.php" class="back-home-btn"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
-
-    <div class="login-container">
-        <div class="login-header">
-            <img src="../assets/images/logoo.png" alt="Logo Irama Cipta" class="login-logo">
-            <h2>System Login</h2>
-            <p>Silakan masuk untuk mengelola portal PT Irama Cipta Eventa.</p>
+<section class="hero-fullscreen">
+    <div class="hero-content">
+        <div class="auth-container">
+            <div class="auth-box">
+                <h2 style="text-align: center; margin-bottom: 20px; color: white;">Login</h2>
+                <form action="" method="POST">
+                    <label style="color: #ccc;">Username</label>
+                    <input type="text" name="username" required>
+                    
+                    <label style="color: #ccc;">Password</label>
+                    <input type="password" name="password" required>
+                    
+                    <button type="submit" name="login">Masuk</button>
+                </form>
+                <p style="text-align: center; margin-top: 20px; font-size: 14px; color: #888;">Belum punya akun? <a href="../register.php">Daftar di sini</a></p>
+            </div>
         </div>
-        
-        <form method="POST" action="" class="login-form">
-            <div class="input-group">
-                <label>Username</label>
-                <div class="input-icon">
-                    <i class="fas fa-user"></i>
-                    <input type="text" name="username" placeholder="Masukkan username..." required>
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label>Password</label>
-                <div class="input-icon">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" name="password" placeholder="Masukkan password..." required>
-                </div>
-            </div>
-            
-            <button type="submit" name="login" class="btn-login">Masuk Sekarang</button>
-        </form>
     </div>
-
+</section>
 </body>
 </html>

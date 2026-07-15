@@ -1,8 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION['status']) || $_SESSION['status'] != "login") {
-    header("location: ../auth/login.php");
-    exit();
+
+// Jika belum login ATAU bukan admin, tendang ke luar!
+if (!isset($_SESSION['user_id']) || $_SESSION['level'] != 'admin') {
+    echo "<script>alert('Akses ditolak! Hanya admin yang diizinkan.'); window.location='../login.php';</script>";
+    exit;
 }
 
 include("../config/koneksi.php");

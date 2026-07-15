@@ -1,10 +1,20 @@
 <?php 
+session_start();
+
+// Validasi: Jika sesi user_id kosong, berarti dia belum login
+if (!isset($_SESSION['user_id'])) {
+    echo "<script>
+            alert('Akses Ditolak! Anda harus login terlebih dahulu untuk membeli tiket.'); 
+            window.location='auth/login.php';
+          </script>";
+    exit; 
+}
+
 include("templates/header.php"); 
 include("config/koneksi.php");
 
-// Proses PHP diletakkan di file yang sama
+// Proses Simpan Data Awal (Tanpa Struk)
 if (isset($_POST['submit_beli'])) {
-    // 1. Tangkap semua data dari form HTML
     $id_event       = $_POST['id_event'];
     $nama_pembeli   = $_POST['nama_pembeli'];
     $email_pembeli  = $_POST['email_pembeli'];
@@ -15,42 +25,23 @@ if (isset($_POST['submit_beli'])) {
     // Membuat kode unik
     $kode_booking = "TIKET-" . time(); 
     
-    // 2. PROSES UPLOAD FOTO STRUK
-    $nama_file = $_FILES['foto_bukti']['name'];
-    $tmp_name  = $_FILES['foto_bukti']['tmp_name'];
+    // Simpan ke database dengan status 'Belum Dibayar' dan bukti_bayar dikosongkan dulu
+    $query_insert = "INSERT INTO transaksi_tiket 
+                     (kode_booking, id_event, nama_pembeli, email_pembeli, kategori_tiket, jumlah_tiket, total_bayar, bukti_bayar, status_pembayaran) 
+                     VALUES 
+                     ('$kode_booking', '$id_event', '$nama_pembeli', '$email_pembeli', '$kategori_tiket', '$jumlah_tiket', '$total_bayar', '', 'Belum Dibayar')";
+                     
+    $simpan = mysqli_query($konek, $query_insert);
     
-    // Ganti nama file agar tidak ada yang sama
-    $ext = pathinfo($nama_file, PATHINFO_EXTENSION);
-    $nama_file_baru = $kode_booking . "_struk." . $ext; 
-    
-    // Lokasi penyimpanan folder uploads
-    $path = "assets/uploads/" . $nama_file_baru;
-    
-    // 3. Eksekusi pemindahan file
-    if (move_uploaded_file($tmp_name, $path)) {
+    if ($simpan) {
+        $id_transaksi_baru = mysqli_insert_id($konek);
         
-        // PROSES SIMPAN KE DATABASE (Pastikan semua kolom dimasukkan)
-        $query_insert = "INSERT INTO transaksi_tiket 
-                         (kode_booking, id_event, nama_pembeli, email_pembeli, kategori_tiket, jumlah_tiket, total_bayar, bukti_bayar, status_pembayaran) 
-                         VALUES 
-                         ('$kode_booking', '$id_event', '$nama_pembeli', '$email_pembeli', '$kategori_tiket', '$jumlah_tiket', '$total_bayar', '$nama_file_baru', 'Menunggu Validasi')";
-                         
-        $simpan = mysqli_query($konek, $query_insert);
-        
-        if ($simpan) {
-            // Menangkap ID transaksi yang baru saja dibuat oleh database
-            $id_transaksi_baru = mysqli_insert_id($konek);
-            
-            // Membawa ID tersebut ke halaman nota menggunakan URL (?id=...)
-            echo "<script>
-                    alert('Pembelian Berhasil! Menunggu validasi dari admin.'); 
-                    window.location='nota_pembelian.php?id=" . $id_transaksi_baru . "';
-                  </script>";
-        } else {
-            echo "<script>alert('Gagal menyimpan data transaksi ke database!');</script>";
-        }
+        // Langsung arahkan ke halaman Pembayaran yang baru
+        echo "<script>
+                window.location='pembayaran.php?id=" . $id_transaksi_baru . "';
+              </script>";
     } else {
-        echo "<script>alert('Gagal mengunggah foto struk! Pastikan folder assets/uploads sudah dibuat.');</script>";
+        echo "<script>alert('Gagal memproses pesanan ke database!');</script>";
     }
 }
 
@@ -58,8 +49,6 @@ if (isset($_POST['submit_beli'])) {
 $id_event = isset($_GET['id']) ? $_GET['id'] : 1;
 $query_event = mysqli_query($konek, "SELECT * FROM jadwal_event WHERE id_event='$id_event'");
 $event = mysqli_fetch_assoc($query_event);
-
-// Jika ID event tidak ada di database, beri nama default
 $nama_event = $event ? $event['nama_event'] : "Hiphop Fest: Changbin & Friends";
 ?>
 
@@ -67,7 +56,7 @@ $nama_event = $event ? $event['nama_event'] : "Hiphop Fest: Changbin & Friends";
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Beli Tiket - Irama Cipta Eventa</title>
+    <title>Konfirmasi Tiket - Irama Cipta Eventa</title>
 </head>
 <body>
 
@@ -81,7 +70,7 @@ $nama_event = $event ? $event['nama_event'] : "Hiphop Fest: Changbin & Friends";
 <section class="event-detail-container" style="max-width: 700px; margin-top: -30px;">
     <div class="event-detail-layout" style="display: block; padding: 40px;">
         
-        <form method="POST" action="" class="contact-card-form" enctype="multipart/form-data">
+        <form method="POST" action="" class="contact-card-form">
             <input type="hidden" name="id_event" value="<?php echo $id_event; ?>">
             
             <div style="margin-bottom: 25px;">
@@ -114,18 +103,12 @@ $nama_event = $event ? $event['nama_event'] : "Hiphop Fest: Changbin & Friends";
             </div>
 
             <div style="background: #0a0a0a; padding: 20px; border-left: 4px solid #ff3366; margin-bottom: 30px; border-radius: 4px;">
-                <p style="color: #aaa; font-size: 13px; text-transform: uppercase;">Total Pembayaran</p>
+                <p style="color: #aaa; font-size: 13px; text-transform: uppercase;">Total Tagihan</p>
                 <h2 style="color: #ffffff; margin-top: 5px;" id="display_total">Rp 3.500.000</h2>
                 <input type="hidden" name="total_bayar" id="total_bayar" value="3500000">
             </div>
 
-            <div class="form-group" style="margin-bottom: 25px;">
-                <label style="color: #ff3366; font-weight: bold;">Upload Bukti Transfer / Pembayaran</label>
-                <input type="file" name="foto_bukti" accept="image/jpeg, image/png, image/jpg" required style="width: 100%; padding: 10px; background: #111; border: 1px solid #333; color: white; border-radius: 4px; margin-top: 5px;">
-                <p style="font-size: 11px; color: #888; margin-top: 5px;">* Format: JPG, JPEG, PNG.</p>
-            </div>
-
-            <button type="submit" name="submit_beli" class="btn-pill" style="width: 100%; text-align: center; border: none; cursor: pointer; font-size: 16px; background: #ff3366; color: white; padding: 15px; border-radius: 4px; font-weight: bold;">Konfirmasi & Bayar Sekarang</button>
+            <button type="submit" name="submit_beli" class="btn-pill" style="width: 100%; text-align: center; border: none; cursor: pointer; font-size: 16px; background: #ff3366; color: white; padding: 15px; border-radius: 4px; font-weight: bold;">Konfirmasi Pesanan</button>
         </form>
         
     </div>
@@ -138,13 +121,7 @@ function hitungTotal() {
     var jumlah = document.getElementById("jumlah_tiket").value;
     
     var total = parseInt(harga) * parseInt(jumlah);
-    
-    // Format mata uang Rupiah untuk tampilan visual
-    var formatter = new Intl.NumberFormat('id-ID', {
-        style: 'currency',
-        currency: 'IDR',
-        minimumFractionDigits: 0
-    });
+    var formatter = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 });
     
     document.getElementById("display_total").innerText = formatter.format(total);
     document.getElementById("total_bayar").value = total;

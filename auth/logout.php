@@ -1,5 +1,7 @@
 <?php
 session_start();
-session_destroy(); // Menghapus semua sesi yang aktif
-header("location: ../index.php"); // Mengembalikan pengguna ke halaman utama publik
+session_unset();  // Mengosongkan data session
+session_destroy(); // Menghancurkan session sepenuhnya
+
+echo "<script>alert('Anda telah berhasil keluar dari sistem.'); window.location='login.php';</script>";
 ?>

@@ -47,8 +47,12 @@ include("sidebar.php");
         
         <div class="filter-kategori" style="display: flex; gap: 10px; flex-wrap: wrap;">
             <a href="kelola_event.php?kategori=Semua&status=<?php echo $filter_status; ?>" class="btn-filter <?php echo ($filter_kategori == 'Semua') ? 'active' : ''; ?>" style="padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; border: 2px solid #1d419d; color: <?php echo ($filter_kategori == 'Semua') ? '#fff' : '#1d419d'; ?>; background: <?php echo ($filter_kategori == 'Semua') ? '#1d419d' : 'transparent'; ?>;">Semua Kategori</a>
+            
             <a href="kelola_event.php?kategori=Concerts&status=<?php echo $filter_status; ?>" class="btn-filter <?php echo ($filter_kategori == 'Concerts') ? 'active' : ''; ?>" style="padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; border: 2px solid #1d419d; color: <?php echo ($filter_kategori == 'Concerts') ? '#fff' : '#1d419d'; ?>; background: <?php echo ($filter_kategori == 'Concerts') ? '#1d419d' : 'transparent'; ?>;"><i class="fas fa-microphone-alt"></i> Concerts</a>
+            
             <a href="kelola_event.php?kategori=Festival&status=<?php echo $filter_status; ?>" class="btn-filter <?php echo ($filter_kategori == 'Festival') ? 'active' : ''; ?>" style="padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; border: 2px solid #1d419d; color: <?php echo ($filter_kategori == 'Festival') ? '#fff' : '#1d419d'; ?>; background: <?php echo ($filter_kategori == 'Festival') ? '#1d419d' : 'transparent'; ?>;"><i class="fas fa-store"></i> Festival & Bazaar</a>
+            
+            <a href="kelola_event.php?kategori=Private&status=<?php echo $filter_status; ?>" class="btn-filter <?php echo ($filter_kategori == 'Private') ? 'active' : ''; ?>" style="padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; text-decoration: none; border: 2px solid #1d419d; color: <?php echo ($filter_kategori == 'Private') ? '#fff' : '#1d419d'; ?>; background: <?php echo ($filter_kategori == 'Private') ? '#1d419d' : 'transparent'; ?>;"><i class="fas fa-glass-cheers"></i> Private Service</a>
         </div>
 
         <div>
